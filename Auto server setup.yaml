@@ -1,0 +1,25 @@
+---
+- name: setup linux server
+  hosts: all
+  tasks:
+    - name: update yum packeges
+      yum:
+        name: "*"
+        state: latest
+
+    - name: install important packeges
+      yum:
+        name:
+          - httpd
+          - git
+          - vim
+        state: latest
+
+    - name: add new user
+      user:
+        name: adham_m
+        uid: 4000
+        groups: engineer
+        shell: /bin/bash
+        state: present
+        home: /home/adham(m)
